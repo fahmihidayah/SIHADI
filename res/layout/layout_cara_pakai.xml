@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+     >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textViewTitle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cara Pakai"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/textViewInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Cara Menggunakan Aplikasi ini sangat mudah, yaitu : \n
+                    \n1. Pengguna mengisntall aplikasi ini pada perangkat komunikasi\n
+                    \n2. Setelah itu, pengguna akan disediakan kolom Login dan Daftar\n
+                    \n3. Bagi pengguna yang belum terdaftar, silahkan klik menu daftar\n
+                    \n4. Setelah klik menu daftar, maka pengguna akan diminta mengisi data data itu nantinya berguna sewaktu proses login dan Chatting\n
+                    \n5. Setelah melakukan proses pendaftaran, silahkan memasukkan nama dan paswword\n
+                    \n6. Setelah itu, pengguna dapat menggunakan aplikasi\n
+                    \n7. Pada Menu di sisi kiri, terdapat pilihan menu, diantara Sistem Pakar dan Chatting\n
+                    \n8. Pada Menu Sistem Pakar, pengguna akan diberi pertanyaan terkait masalah yang ada pada tanaman padi\n
+                    \n9. Pada Menu Chating, pengguna dapat berkomunikasi antar pengguna yang lain, tentunya dengan menginstall aplikasi ini terlebih dahulu\n  " />
+					
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

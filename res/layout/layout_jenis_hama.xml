@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textViewTitle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jenis Hama"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/textViewInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Hama: Hama adalah organisme yang dianggap merugikan dan tak diinginkan dalam kegiatan sehari-hari manusia.\n
+                    \n Dalam pertanian, hama adalah organisme pengganggu tanaman yang menimbulkan kerusakan secara fisik, dan ke dalamnya praktis adalah semua hewan yang menyebabkan kerugian dalam pertanian.\n
+
+\n Hama pada tanaman padi ada beberapa jenisnya, namun pada penelitian ini hanya diambil sampel sebanyak 5 saja. Karena, 5 hama padi ini yang sering dialami oleh para petani.\n
+\nKelima jenis hama tersebut adalah:\n
+\n-	Tikus\n
+\n-	KeongMas\n
+\n-	Penggerek Batang\n
+\n-	Tungro\n
+\n-	Hawar Bakteri\n
+" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

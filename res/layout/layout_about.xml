@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textViewTitle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tentang"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/textViewInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Seiring dengan perkembangan teknologi Informasi, maka berkembang pula aplikasi guna memudahkan para penggunanya.\n
+                    \nSalah satu contoh, adalah Aplikasi Penanganan Hama Padi ini.\n
+                    \nDengan Aplikasi ini, petani diharapkan mampu mengoperasikannya.\n
+                    \nSerta kedepannya Aplikasi ini berguna bagi seluruh petani di Indonesia.\n Aplikasi ini dirancang dan dicetus oleh :\n
+                    \n- Nama : Khaliq Subagio dan team
+                    \n\n- Fakultas : Teknik Elektro
+                    \n\n- Program Studi : Jaringan Telekomunikasi Digital
+                    \n\n- Universitas : Politeknik Negeri Malang
+                    \n\n- Tahun : 2014
+                    \n\n- Email : jtd_polinema2010@yahoo.com" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
