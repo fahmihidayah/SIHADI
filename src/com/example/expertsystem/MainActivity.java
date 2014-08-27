@@ -83,8 +83,10 @@ public class MainActivity extends NavigationDrawerActivity implements Constants 
 		case 4:
 			return new FragmentGroup();
 		case 5:
-			return new FragmentAbout();
+			return new FragmentDaftarPengguna();
 		case 6:
+			return new FragmentAbout();
+		case 7:
 			mainBeans.logout();
 		default:
 			return null;
@@ -94,12 +96,9 @@ public class MainActivity extends NavigationDrawerActivity implements Constants 
 	@Override
 	public void setListDrawerMenu(ArrayList<MenuDrawer> listMenuDrawers) {
 		listMenuDrawers.add(new MenuDrawer(R.drawable.icon_cara_pakai, "Cara Pakai"));
-		listMenuDrawers
-				.add(new MenuDrawer(R.drawable.mantis_hama, "Jenis Hama"));
-		listMenuDrawers.add(new MenuDrawer(R.drawable.network,
-				"Cara Bertanam"));
-		listMenuDrawers.add(new MenuDrawer(R.drawable.icon_sistem_pakar_dua,
-				"Sistem Pakar"));
+		listMenuDrawers.add(new MenuDrawer(R.drawable.mantis_hama, "Jenis Hama"));
+		listMenuDrawers.add(new MenuDrawer(R.drawable.network,"Cara Bertanam"));
+		listMenuDrawers.add(new MenuDrawer(R.drawable.icon_sistem_pakar_dua,"Sistem Pakar"));
 		listMenuDrawers.add(new MenuDrawer(R.drawable.large_group, "Group"));
 		listMenuDrawers.add(new MenuDrawer(R.drawable.powered_by_google_dark, "Daftar Pengguna Aktif"));
 		listMenuDrawers.add(new MenuDrawer(R.drawable.icon_about, "Tentang"));

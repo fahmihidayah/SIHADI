@@ -8,7 +8,10 @@ import com.loopj.android.http.RequestParams;
 public class WebRestClient {
 	// ini diisi alamat ip/simple_chat_room/api/
 	private static final String BASE_URL = "http://";
-	private static final String PATH_URL = "/simple_chat_room/api/";
+	// /sistem_pakar_chat/api/
+//	private static final String PATH_URL = "/simple_chat_room/api/";
+	private static final String PATH_URL = "/sistem_pakar_chat/api/";
+	
 
 	private static AsyncHttpClient client = new AsyncHttpClient();
 
