@@ -15,13 +15,18 @@ import com.example.model.Constants;
 import com.example.model.Premis;
 import com.example.model.User;
 import com.framework.file_handler.FileHandler;
-
+/**
+ * 
+ * @author fahmi
+ * kurang menyimpan daftar pengguna
+ */
 public class DataSingleton extends Observable implements Constants {
 	private static DataSingleton instance;
 	private Inferentor inferentor = new Inferentor();
 	private User currentUser ;
 	private String currentActivity = "";
 	private ArrayList<ChatMessage> listChatMessage;
+	private ArrayList<User> listPengguna = new ArrayList<User>();
 	private String serverAddress = "192.168.1.1";
 
 	protected DataSingleton() {
@@ -80,6 +85,14 @@ public class DataSingleton extends Observable implements Constants {
 		notifyObservers();
 	}
 	
+	public ArrayList<User> getListPengguna() {
+		return listPengguna;
+	}
+
+	public void setListPengguna(ArrayList<User> listPengguna) {
+		this.listPengguna = listPengguna;
+	}
+
 	public void saveToFile(Context context){
 		try {
 			FileHandler.saveDataToFile(context, CURRENT_ACTIVITY_FILE, Context.MODE_PRIVATE, currentActivity);

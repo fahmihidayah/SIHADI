@@ -21,6 +21,8 @@ public class ChatMessageResponse extends BaseResponse {
 	private String message_data;
 	private String id;
 	private String nama;
+	private String alamat;
+	private String kelompok_tani;	
 	private String gcm_id;
 
 	public String getMessage_data() {
@@ -56,7 +58,7 @@ public class ChatMessageResponse extends BaseResponse {
 	}
 	
 	public ChatMessage getChatMessage(){
-		ChatMessage chatMessage = new ChatMessage(message_data, new Date(), new User(id, nama, gcm_id));
+		ChatMessage chatMessage = new ChatMessage(message_data, new Date(), new User(id, nama, alamat, kelompok_tani, gcm_id));
 		return chatMessage;
 	}
 

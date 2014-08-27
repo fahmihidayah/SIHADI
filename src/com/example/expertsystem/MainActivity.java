@@ -101,6 +101,7 @@ public class MainActivity extends NavigationDrawerActivity implements Constants 
 		listMenuDrawers.add(new MenuDrawer(R.drawable.icon_sistem_pakar_dua,
 				"Sistem Pakar"));
 		listMenuDrawers.add(new MenuDrawer(R.drawable.large_group, "Group"));
+		listMenuDrawers.add(new MenuDrawer(R.drawable.powered_by_google_dark, "Daftar Pengguna Aktif"));
 		listMenuDrawers.add(new MenuDrawer(R.drawable.icon_about, "Tentang"));
 		listMenuDrawers.add(new MenuDrawer(R.drawable.icon_logout, "Log Out"));
 	}
