@@ -62,7 +62,24 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name="com.example.expertsystem.ChatUserActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.example.expertsystem.ChatUserActivity" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name="com.example.expertsystem.ChatGCMBroadcast" >
+            <intent-filter android:priority="90" >
+                <action android:name="BROADCAST_CHAT.FOR_KHOLIQ" />
+            </intent-filter>
+        </receiver>
+        
         <receiver
             android:name="com.framework.gcm.GCMBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >

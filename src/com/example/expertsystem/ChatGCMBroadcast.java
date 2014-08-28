@@ -18,6 +18,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class ChatGCMBroadcast extends BroadcastReceiver {
@@ -32,9 +33,12 @@ private boolean makeNotif = true;
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		String message = intent.getStringExtra("message");
-		DataSingleton.getInstance().loadFromFile(context);
+		DataSingleton.getInstance().loadStatusActive(context);
 		makeNotif = DataSingleton.getInstance().getActive();
-//		Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+		if(!makeNotif){
+			DataSingleton.getInstance().loadFromFile(context);
+		}
+		Toast.makeText(context, "status " + makeNotif, Toast.LENGTH_LONG).show();
 		if(message != null){
 			ChatMessageResponse messageResponse = new Gson().fromJson(message, ChatMessageResponse.class);
 			if(messageResponse.getMessage_data() != null){
@@ -62,11 +66,12 @@ private boolean makeNotif = true;
 				DataSingleton.getInstance().getListChatUser().add(userChat);
 			}
 		}
-		DataSingleton.getInstance().notifyObserverDataChange();
+		DataSingleton.getInstance().saveToFile(context);
+		DataSingleton.getInstance().notifyObserverDataChange(null);
 	}
 	
 	private void createNotif(ChatMessage chatMessage, Context context){
-		if(!makeNotif){
+		if(!DataSingleton.getInstance().getActive()){
 			Intent intent = new Intent(context, MainActivity.class);
 		    PendingIntent pIntent = PendingIntent.getActivity(context, 0, intent, 0);
 		    

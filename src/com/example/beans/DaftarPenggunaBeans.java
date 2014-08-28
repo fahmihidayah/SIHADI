@@ -4,10 +4,13 @@ import java.util.ArrayList;
 
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.widget.Toast;
 
+import com.example.expertsystem.ChatUserActivity;
 import com.example.expertsystem.FragmentDaftarPengguna;
 import com.example.model.User;
+import com.example.model.UserChat;
 import com.example.response.ListUserResponse;
 import com.framework.rest_clients.WebRestClient;
 import com.google.gson.Gson;
@@ -18,7 +21,6 @@ public class DaftarPenggunaBeans {
 	private FragmentDaftarPengguna fragmentDaftarPengguna;
 	private ArrayList<User> daftarPengguna;
 	
-	
 	public DaftarPenggunaBeans(FragmentDaftarPengguna fragmentDaftarPengguna) {
 		super();
 		this.fragmentDaftarPengguna = fragmentDaftarPengguna;
@@ -27,7 +29,7 @@ public class DaftarPenggunaBeans {
 	
 	public void requestDaftarPengguna(){
 		RequestParams params = new RequestParams();
-		
+		params.put("user_id", DataSingleton.getInstance().getCurrentUser().getId());
 		WebRestClient.post("list_user.php", params, new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(JSONObject response) {
@@ -47,5 +49,22 @@ public class DaftarPenggunaBeans {
 		this.daftarPengguna = daftarPengguna;
 	}
 	
+	
+	public void selectUserToChat(int index){
+		ArrayList<UserChat> listUserChat = DataSingleton.getInstance().getListChatUser();
+		UserChat userChatSelected = new UserChat();
+		userChatSelected.setUser(daftarPengguna.get(index));
+		int indexUserChat = listUserChat.indexOf(userChatSelected);
+		if(indexUserChat == -1){
+			DataSingleton.getInstance().getListChatUser().add(userChatSelected);
+			DataSingleton.getInstance().saveToFile(fragmentDaftarPengguna.getActivity());
+			DataSingleton.getInstance().saveToFile(fragmentDaftarPengguna.getActivity());
+			indexUserChat = DataSingleton.getInstance().getListChatUser().indexOf(userChatSelected);
+		}
+		Intent intent = new Intent(fragmentDaftarPengguna.getActivity(), ChatUserActivity.class);
+		intent.putExtra("index", indexUserChat);
+		fragmentDaftarPengguna.getActivity().startActivity(intent);
+		
+	}
 	 
 }

@@ -2,6 +2,8 @@ package com.example.expertsystem;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Observable;
+import java.util.Observer;
 
 import com.example.beans.DataSingleton;
 import com.example.beans.Inferentor;
@@ -44,7 +46,7 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-public class MainActivity extends NavigationDrawerActivity implements Constants {
+public class MainActivity extends NavigationDrawerActivity implements Constants{
 
 	private MainBeans mainBeans;
 	private int currentFragment = 0;
@@ -63,7 +65,7 @@ public class MainActivity extends NavigationDrawerActivity implements Constants 
 			DataSingleton.getInstance().getListChatMessage()
 					.add(chatMessageResponse.getChatMessage());
 			DataSingleton.getInstance().saveToFile(context);
-			DataSingleton.getInstance().notifyObserverDataChange();
+			DataSingleton.getInstance().notifyObserverDataChange(null);
 
 		}
 	};
@@ -108,6 +110,10 @@ public class MainActivity extends NavigationDrawerActivity implements Constants 
 	@Override
 	public void afterInitializeConfiguration(Bundle saveInstanceState) {
 		mainBeans = new MainBeans(this);
+		DataSingleton.getInstance().setActive(true);
+		DataSingleton.getInstance().saveToFile(this);
+		
+		
 		Inferentor inferentor = DataSingleton.getInstance().getInferentor();
 		Penyakit penyakit = new Penyakit("Tikus");
 		penyakit.setGambar(R.drawable.hamatikus);

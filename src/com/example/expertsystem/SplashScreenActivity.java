@@ -5,6 +5,7 @@ import com.example.beans.DataSingleton;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class SplashScreenActivity extends Activity {
 	
@@ -16,6 +17,7 @@ public class SplashScreenActivity extends Activity {
 		DataSingleton.getInstance().loadFromFile(this);
 		DataSingleton.getInstance().setActive(true);
 		DataSingleton.getInstance().saveToFile(this);
+		Toast.makeText(this, "status " + DataSingleton.getInstance().getActive(), Toast.LENGTH_LONG).show();
 		if(DataSingleton.getInstance().getCurrentActivity().isEmpty()){
 			startActivity(new Intent(this, LoginActivity.class));
 		}

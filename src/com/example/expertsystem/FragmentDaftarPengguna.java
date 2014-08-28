@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class FragmentDaftarPengguna extends Fragment{
@@ -28,11 +29,19 @@ public class FragmentDaftarPengguna extends Fragment{
 			@Override
 			public void setViewItems(View view, int position) {
 				User user = listData.get(position);
-				CommonUtilities.setTextToView(view, R.id.textViewNamaPengguna, "Nama : " +  user.getNama());
+				CommonUtilities.setTextToView(view, R.id.textViewNamaPengguna, "Id : " + user.getId() + "\nNama : " +  user.getNama());
 			}
 		};
 		listViewPengguna.setAdapter(customAdapter);
 		daftarPenggunaBeans.requestDaftarPengguna();
+		listViewPengguna.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				daftarPenggunaBeans.selectUserToChat(arg2);
+			}
+		});
 	}
 	
 	@Override

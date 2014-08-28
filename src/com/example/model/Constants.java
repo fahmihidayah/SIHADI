@@ -1,7 +1,7 @@
 package com.example.model;
 
 public interface Constants {
-	public static final String BROADCAST_CHAT = "BROADCAST_CHAT";
+	public static final String BROADCAST_CHAT = "BROADCAST_CHAT.FOR_KHOLIQ";
 	// 737592324330 553661011522 
 	public static final String SENDER_ID ="737592324330";
 	

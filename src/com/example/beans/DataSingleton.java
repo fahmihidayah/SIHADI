@@ -84,9 +84,16 @@ public class DataSingleton extends Observable implements Constants {
 		this.serverAddress = serverAddress;
 	}
 
-	public void notifyObserverDataChange(){
+	public void notifyObserverDataChange(Object data){
 		setChanged();
-		notifyObservers();
+		if(data == null){
+			notifyObservers();	
+		}
+		else {
+			notifyObservers(data);
+		}
+		
+		
 	}
 	
 	public ArrayList<User> getListPengguna() {
@@ -151,4 +158,22 @@ public class DataSingleton extends Observable implements Constants {
 		
 	}
 
+	
+	public void loadStatusActive(Context context){
+		try {
+			active = (Boolean) FileHandler.loadDataFromFile(context, STATE);
+		} catch (StreamCorruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

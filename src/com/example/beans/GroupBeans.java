@@ -37,7 +37,7 @@ public class GroupBeans {
 				ChatMessage chatMessage = new ChatMessage(message, new Date(), currentUser);
 				DataSingleton.getInstance().getListChatMessage().add(chatMessage);
 				DataSingleton.getInstance().saveToFile(fragmentGroup.getActivity());
-				DataSingleton.getInstance().notifyObserverDataChange();
+				DataSingleton.getInstance().notifyObserverDataChange(chatMessage);
 			}
 		});
 	}
