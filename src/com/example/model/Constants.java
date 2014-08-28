@@ -9,6 +9,9 @@ public interface Constants {
 	public static final String CURRENT_USER_DATA = "CURRENT_USER_DATA.txt";
 	public static final String CHAT_MESSAGE_DATA = "CHAT_MESSAGE_DATA.DAT";
 	public static final String SERVER_ADDRESS = "SERVER_ADDRESS.DAT";
+	public static final String USER_CHAT = "USER_CHAT.DAT";
+	public static final String LIST_USER = "LIST_USER.DAT";
+	
 	public static final String MAIN_ACTIVITY = "com.example.expertsystem.MainActivity";
 	
 
