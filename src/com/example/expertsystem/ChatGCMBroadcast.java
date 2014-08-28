@@ -2,7 +2,15 @@ package com.example.expertsystem;
 
 import java.util.ArrayList;
 
+import com.example.beans.DataSingleton;
+import com.example.model.ChatMessage;
+import com.example.model.User;
+import com.example.model.UserChat;
+import com.example.response.ChatMessageResponse;
+import com.google.gson.Gson;
 
+
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -11,6 +19,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
+@SuppressLint("NewApi")
 public class ChatGCMBroadcast extends BroadcastReceiver {
 private boolean makeNotif = true;
 	
@@ -23,56 +32,49 @@ private boolean makeNotif = true;
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		String message = intent.getStringExtra("message");
-		DataSingleton.getInstance().loadActiveState(context);
+		DataSingleton.getInstance().loadFromFile(context);
 		makeNotif = DataSingleton.getInstance().getActive();
 //		Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 		if(message != null){
-			ReceiveMessageResponse messageResponse = new Gson().fromJson(message, ReceiveMessageResponse.class);
+			ChatMessageResponse messageResponse = new Gson().fromJson(message, ChatMessageResponse.class);
 			if(messageResponse.getMessage_data() != null){
-				ChatMessage chatMessage = messageResponse.toChatMessage();
-				insertData(chatMessage, context);
+				ChatMessage chatMessage = messageResponse.getChatMessage();
+				boolean isGrup = (messageResponse.getGrup().equals("1") ? true : false);
+				insertData(chatMessage, context, isGrup);
 				createNotif(chatMessage, context);
 			}
 		}
 					
 	}
 	
-	private void insertData(ChatMessage chatMessage, Context context){
-		if(!makeNotif){
-			DataSingleton.getInstance().loadFromFile(context);
-		}
-		ArrayList<ChatingRoom> listChatingRoom = DataSingleton.getInstance().getListChatingRoom();
-		if(chatMessage.getTingkat().equalsIgnoreCase("0")){
-			for (ChatingRoom chatingRoom : listChatingRoom) {
-				chatingRoom.getListChatMessage().add(chatMessage);
-			}
-			DataSingleton.getInstance().notifyObserverDataChange();
-			DataSingleton.getInstance().saveToFile(context);
+	private void insertData(ChatMessage chatMessage, Context context, boolean isGrup){
+		if(isGrup){
+			DataSingleton.getInstance().getListChatMessage().add(chatMessage);
 		}
 		else {
-			for (ChatingRoom chatingRoom : listChatingRoom) {
-				if(chatingRoom.getTingkat().equalsIgnoreCase(chatMessage.getTingkat())){
-					chatingRoom.getListChatMessage().add(chatMessage);
-					DataSingleton.getInstance().notifyObserverDataChange();
-					DataSingleton.getInstance().saveToFile(context);
-					break;
-				}
+			UserChat userChat = new UserChat();
+			userChat.setUser(chatMessage.getUser());
+			int index = DataSingleton.getInstance().getListChatUser().indexOf(userChat);
+			if(index != -1){
+				DataSingleton.getInstance().getListChatUser().get(index).getListChatMessage().add(chatMessage);
+			}
+			else {
+				DataSingleton.getInstance().getListChatUser().add(userChat);
 			}
 		}
-		
-		
+		DataSingleton.getInstance().notifyObserverDataChange();
 	}
 	
 	private void createNotif(ChatMessage chatMessage, Context context){
 		if(!makeNotif){
-			Intent intent = new Intent(context, MainClientActivity.class);
+			Intent intent = new Intent(context, MainActivity.class);
 		    PendingIntent pIntent = PendingIntent.getActivity(context, 0, intent, 0);
 		    
 			NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 			Notification.Builder builder = new Notification.Builder(context)
 			.setContentIntent(pIntent);
-			builder.setContentTitle("Pesan ditingkat : " + chatMessage.getTingkat());
-			builder.setContentText(chatMessage.getUserName() + " : " +chatMessage.getMessage());
+			builder.setContentTitle("Pesan dari : " + chatMessage.getUser().getNama());
+			builder.setContentText(chatMessage.getUser().getNama() + " : " + chatMessage.getMessage());
 			builder.setSmallIcon(R.drawable.ic_launcher);
 			builder.setSound( Uri.parse("android.resource://"
 		            + context.getPackageName() + "/" + R.raw.dive_alarm));

@@ -105,6 +105,14 @@ public class DataSingleton extends Observable implements Constants {
 		this.active = active;
 	}
 
+	public ArrayList<UserChat> getListChatUser() {
+		return listChatUser;
+	}
+
+	public void setListChatUser(ArrayList<UserChat> listChatUser) {
+		this.listChatUser = listChatUser;
+	}
+
 	public void saveToFile(Context context){
 		try {
 			FileHandler.saveDataToFile(context, CURRENT_ACTIVITY_FILE, Context.MODE_PRIVATE, currentActivity);

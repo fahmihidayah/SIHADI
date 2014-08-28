@@ -181,21 +181,21 @@ public class MainActivity extends NavigationDrawerActivity implements Constants 
 		inferentor.addPremisToConclution(new Penyakit("Hawar Bakteri"),
 				new Premis("Daun Yang Menggulung, Mati ( Kering )", false));
 	}
-
-	@Override
-	protected void onResume() {
-		IntentFilter intentFilter = new IntentFilter(BROADCAST_CHAT);
-		intentFilter.setPriority(100);
-		this.registerReceiver(broadcastReceiver, intentFilter);
-		super.onResume();
-	}
-
-	@Override
-	protected void onPause() {
-		unregisterReceiver(broadcastReceiver);
-		
-		super.onPause();
-	}
+//
+//	@Override
+//	protected void onResume() {
+//		IntentFilter intentFilter = new IntentFilter(BROADCAST_CHAT);
+//		intentFilter.setPriority(100);
+//		this.registerReceiver(broadcastReceiver, intentFilter);
+//		super.onResume();
+//	}
+//
+//	@Override
+//	protected void onPause() {
+//		unregisterReceiver(broadcastReceiver);
+//		
+//		super.onPause();
+//	}
 	
 	@Override
 	protected void onDestroy() {
