@@ -30,6 +30,8 @@ public class DataSingleton extends Observable implements Constants {
 	private ArrayList<User> listPengguna = new ArrayList<User>();
 	private ArrayList<UserChat> listChatUser = new ArrayList<UserChat>();
 	private String serverAddress = "192.168.1.1";
+	
+	private Boolean active = true;
 
 	protected DataSingleton() {
 		listChatMessage = new ArrayList<ChatMessage>();
@@ -95,6 +97,14 @@ public class DataSingleton extends Observable implements Constants {
 		this.listPengguna = listPengguna;
 	}
 
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
 	public void saveToFile(Context context){
 		try {
 			FileHandler.saveDataToFile(context, CURRENT_ACTIVITY_FILE, Context.MODE_PRIVATE, currentActivity);
@@ -103,6 +113,7 @@ public class DataSingleton extends Observable implements Constants {
 			FileHandler.saveDataToFile(context, SERVER_ADDRESS, Context.MODE_PRIVATE, serverAddress);
 			FileHandler.saveDataToFile(context, LIST_USER, Context.MODE_PRIVATE, listPengguna);
 			FileHandler.saveDataToFile(context, USER_CHAT, Context.MODE_PRIVATE, listChatUser);
+			FileHandler.saveDataToFile(context, STATE, Context.MODE_PRIVATE, active);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -116,7 +127,8 @@ public class DataSingleton extends Observable implements Constants {
 			currentUser = (User) FileHandler.loadDataFromFile(context, CURRENT_USER_DATA);
 			listChatMessage = (ArrayList<ChatMessage>) FileHandler.loadDataFromFile(context, CHAT_MESSAGE_DATA);
 			listPengguna = (ArrayList<User>) FileHandler.loadDataFromFile(context, LIST_USER);
-			listChatUser = (ArrayList<UserChat>) FileHandler.loadDataFromFile(context, USER_CHAT); 
+			listChatUser = (ArrayList<UserChat>) FileHandler.loadDataFromFile(context, USER_CHAT);
+			active = (Boolean) FileHandler.loadDataFromFile(context, STATE);
 			serverAddress = (String) FileHandler.loadDataFromFile(context, SERVER_ADDRESS);
 			
 		} catch (StreamCorruptedException e) {

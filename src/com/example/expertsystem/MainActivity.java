@@ -193,7 +193,15 @@ public class MainActivity extends NavigationDrawerActivity implements Constants 
 	@Override
 	protected void onPause() {
 		unregisterReceiver(broadcastReceiver);
+		
 		super.onPause();
+	}
+	
+	@Override
+	protected void onDestroy() {
+		DataSingleton.getInstance().setActive(false);
+		DataSingleton.getInstance().saveToFile(this);
+		super.onDestroy();
 	}
 
 	@Override

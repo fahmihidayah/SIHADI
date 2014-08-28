@@ -14,6 +14,8 @@ public class SplashScreenActivity extends Activity {
 		setContentView(R.layout.layout_splash_screen);
 		
 		DataSingleton.getInstance().loadFromFile(this);
+		DataSingleton.getInstance().setActive(true);
+		DataSingleton.getInstance().saveToFile(this);
 		if(DataSingleton.getInstance().getCurrentActivity().isEmpty()){
 			startActivity(new Intent(this, LoginActivity.class));
 		}
