@@ -71,6 +71,7 @@ public class ChatUserActivity extends Activity implements Observer {
 
 	@Override
 	public void update(Observable observable, Object data) {
+		chatUserBeans.getUserChat().setAllRead();
 		Toast.makeText(this, "got new messaage", Toast.LENGTH_LONG).show();
 		customAdapter.notifyDataSetChanged();
 	}
