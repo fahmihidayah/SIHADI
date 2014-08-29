@@ -61,8 +61,10 @@ private boolean makeNotif = true;
 			int index = DataSingleton.getInstance().getListChatUser().indexOf(userChat);
 			if(index != -1){
 				DataSingleton.getInstance().getListChatUser().get(index).getListChatMessage().add(chatMessage);
+				DataSingleton.getInstance().getListChatUser().get(index).addUnreadMessage();
 			}
 			else {
+				userChat.addUnreadMessage();
 				DataSingleton.getInstance().getListChatUser().add(userChat);
 			}
 		}

@@ -1,10 +1,13 @@
 package com.example.beans;
 
+import java.util.Date;
+
 import org.json.JSONObject;
 
 import android.widget.Toast;
 
 import com.example.expertsystem.ChatUserActivity;
+import com.example.model.ChatMessage;
 import com.example.model.User;
 import com.example.model.UserChat;
 import com.framework.rest_clients.WebRestClient;
@@ -27,6 +30,7 @@ public class ChatUserBeans {
 		else {
 			userChat = DataSingleton.getInstance().getListChatUser().get(index);
 			currentUser = DataSingleton.getInstance().getCurrentUser();
+			userChat.setAllRead();
 		}
 	}
 	
@@ -35,6 +39,8 @@ public class ChatUserBeans {
 		params.put("id_sender", currentUser.getId());
 		params.put("message", message);
 		params.put("id_receiver", userChat.getUser().getId());
+		ChatMessage chatMessage = new ChatMessage(message, new Date(), currentUser);
+		userChat.getListChatMessage().add(chatMessage);
 		WebRestClient.post("send_message.php", params, new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(JSONObject response) {

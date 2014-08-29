@@ -21,7 +21,8 @@ public class ChatMessage implements Serializable{
 	private String message;
 	private Date time;
 	private User user;
-
+	private boolean read = false;
+		
 	public ChatMessage(String message, Date time, User user) {
 		super();
 		this.message = message;
@@ -52,5 +53,15 @@ public class ChatMessage implements Serializable{
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public boolean isRead() {
+		return read;
+	}
+
+	public void setRead(boolean read) {
+		this.read = read;
+	}
+	
+	
 
 }

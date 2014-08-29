@@ -6,6 +6,8 @@ import java.util.ArrayList;
 public class UserChat implements Serializable {
 	private User user;
 	private ArrayList<ChatMessage> listChatMessage = new ArrayList<ChatMessage>();
+	private int unreadMessage;
+	
 	public User getUser() {
 		return user;
 	}
@@ -42,6 +44,28 @@ public class UserChat implements Serializable {
 		return true;
 	}
 	
+	public int getUnreadMessage() {
+		return unreadMessage;
+	}
+	public void setUnreadMessage(int unreadMessage) {
+		this.unreadMessage = unreadMessage;
+	}
+	public void countUnreadMessage(){
+		unreadMessage = 0;
+		for (ChatMessage e : listChatMessage) {
+			unreadMessage = unreadMessage + (e.isRead()?0:1);
+		}
+	}
+	public void setAllRead() {
+		for (ChatMessage e : listChatMessage) {
+			e.setRead(true);
+		}
+		
+		unreadMessage = 0;
+	}
+	public void addUnreadMessage() {
+		unreadMessage++;
+	}
 	
 
 }

@@ -20,11 +20,13 @@ import com.loopj.android.http.RequestParams;
 public class DaftarPenggunaBeans {
 	private FragmentDaftarPengguna fragmentDaftarPengguna;
 	private ArrayList<User> daftarPengguna;
+	private ArrayList<UserChat> listUserChat = new ArrayList<UserChat>();
 	
 	public DaftarPenggunaBeans(FragmentDaftarPengguna fragmentDaftarPengguna) {
 		super();
 		this.fragmentDaftarPengguna = fragmentDaftarPengguna;
 		daftarPengguna = DataSingleton.getInstance().getListPengguna();
+		listUserChat = DataSingleton.getInstance().getListChatUser();
 	}
 	
 	public void requestDaftarPengguna(){
@@ -36,6 +38,7 @@ public class DaftarPenggunaBeans {
 				ListUserResponse listUserResponse = new Gson().fromJson(response.toString(), ListUserResponse.class);
 				DataSingleton.getInstance().getListPengguna().clear();
 				DataSingleton.getInstance().getListPengguna().addAll(listUserResponse.getData());
+				addUserChat();
 				DataSingleton.getInstance().saveToFile(fragmentDaftarPengguna.getActivity());
 				Toast.makeText(fragmentDaftarPengguna.getActivity(), "Sukses request data", Toast.LENGTH_LONG).show();
 				fragmentDaftarPengguna.customAdapter.notifyDataSetChanged();
@@ -50,6 +53,14 @@ public class DaftarPenggunaBeans {
 	}
 	
 	
+	public ArrayList<UserChat> getListUserChat() {
+		return listUserChat;
+	}
+
+	public void setListUserChat(ArrayList<UserChat> listUserChat) {
+		this.listUserChat = listUserChat;
+	}
+
 	public void selectUserToChat(int index){
 		ArrayList<UserChat> listUserChat = DataSingleton.getInstance().getListChatUser();
 		UserChat userChatSelected = new UserChat();
@@ -65,6 +76,16 @@ public class DaftarPenggunaBeans {
 		intent.putExtra("index", indexUserChat);
 		fragmentDaftarPengguna.getActivity().startActivity(intent);
 		
+	}
+	
+	private void addUserChat(){
+		for (User user : daftarPengguna) {
+			UserChat userChat = new UserChat();
+			userChat.setUser(user);
+			if(!listUserChat.contains(userChat)){
+				listUserChat.add(userChat);
+			}
+		}
 	}
 	 
 }
