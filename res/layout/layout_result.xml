@@ -31,12 +31,34 @@
     <ListView
         android:id="@+id/listViewPenyakit"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_above="@+id/buttonNext"
+        android:layout_height="200dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textViewTitle"
         android:background="@drawable/button_thm_active" >
 
     </ListView>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/listViewPenyakit"
+        android:background="#FFF" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textViewKesimpulanKata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kesimpulan : " />
+            
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

@@ -442,11 +442,11 @@ containing a value of this type.
         public static final int wc=0x7f020042;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f070031;
-        public static final int action_settings=0x7f070036;
+        public static final int LinearLayout1=0x7f070032;
+        public static final int action_settings=0x7f070037;
         public static final int book_now=0x7f070010;
         public static final int buttonDaftar=0x7f070020;
-        public static final int buttonFinish=0x7f070032;
+        public static final int buttonFinish=0x7f070033;
         public static final int buttonLogin=0x7f07002f;
         public static final int buttonNext=0x7f070022;
         public static final int buttonSend=0x7f070024;
@@ -455,7 +455,7 @@ containing a value of this type.
         public static final int buy_with_google=0x7f07000e;
         public static final int checkBoxGejala=0x7f070028;
         public static final int classic=0x7f070011;
-        public static final int drawer_layout=0x7f070033;
+        public static final int drawer_layout=0x7f070034;
         public static final int editTextAlamat=0x7f07001e;
         public static final int editTextKelompokTani=0x7f07001f;
         public static final int editTextMessage=0x7f070025;
@@ -463,7 +463,7 @@ containing a value of this type.
         public static final int editTextPassword=0x7f07001d;
         public static final int editTextServerAddress=0x7f070017;
         public static final int editTextUserName=0x7f07001c;
-        public static final int frame_container=0x7f070034;
+        public static final int frame_container=0x7f070035;
         public static final int grayscale=0x7f070012;
         public static final int holo_dark=0x7f070005;
         public static final int holo_light=0x7f070006;
@@ -474,9 +474,9 @@ containing a value of this type.
         public static final int listViewGejala=0x7f070023;
         public static final int listViewPengguna=0x7f070021;
         public static final int listViewPenyakit=0x7f070030;
-        public static final int list_slidermenu=0x7f070035;
+        public static final int list_slidermenu=0x7f070036;
         public static final int match_parent=0x7f07000c;
-        public static final int menu_setting_server=0x7f070037;
+        public static final int menu_setting_server=0x7f070038;
         public static final int monochrome=0x7f070013;
         public static final int none=0x7f070000;
         public static final int normal=0x7f070001;
@@ -491,6 +491,7 @@ containing a value of this type.
         public static final int textViewContactName=0x7f070029;
         public static final int textViewGejala=0x7f070027;
         public static final int textViewInfo=0x7f07001a;
+        public static final int textViewKesimpulanKata=0x7f070031;
         public static final int textViewMessage=0x7f07002a;
         public static final int textViewNamaPengguna=0x7f07002c;
         public static final int textViewResultPenyakit=0x7f07002d;

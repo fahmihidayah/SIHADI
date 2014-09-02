@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class FragmentResult extends Fragment{
 	
@@ -25,11 +26,14 @@ public class FragmentResult extends Fragment{
 	public ListView listViewPenyakit;
 	public CustomAdapter<Conclution> customAdapter;
 	public Inferentor inferentor;
+	public TextView textViewKesimpulanKata;
 	private ArrayList<Conclution> listResult;
+	
 	
 	private void initialComponent(){
 		inferentor = DataSingleton.getInstance().getInferentor();
 		buttonNext = (Button) rootView.findViewById(R.id.buttonNext);
+		textViewKesimpulanKata = (TextView) rootView.findViewById(R.id.textViewKesimpulanKata);
 		buttonNext.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -50,6 +54,19 @@ public class FragmentResult extends Fragment{
 				CommonUtilities.setResToImageView(view, R.id.imageView1, ((Penyakit) conclution).getGambar());			}
 		};
 		listViewPenyakit.setAdapter(customAdapter);
+		
+		String kesimpulanKata = "Hasil diagnosa : Tanaman Padi Anda terserang ";
+		int i = 0;
+		for (Conclution conclution : listResult) {
+			if(i == 0){
+				kesimpulanKata += conclution.getNameStr() + ",";	
+			}else {
+				kesimpulanKata += "kemungkinan yang lain terkena :" + conclution.getNameStr() + ",";
+			}
+			i++;
+		}
+		textViewKesimpulanKata.setText(kesimpulanKata);
+		
 	}
 	
 	@Override

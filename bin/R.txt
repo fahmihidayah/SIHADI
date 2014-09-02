@@ -126,11 +126,11 @@ int drawable teknik_pengendalian_tikus 0x7f02003f
 int drawable tikus 0x7f020040
 int drawable tungro 0x7f020041
 int drawable wc 0x7f020042
-int id LinearLayout1 0x7f070031
-int id action_settings 0x7f070036
+int id LinearLayout1 0x7f070032
+int id action_settings 0x7f070037
 int id book_now 0x7f070010
 int id buttonDaftar 0x7f070020
-int id buttonFinish 0x7f070032
+int id buttonFinish 0x7f070033
 int id buttonLogin 0x7f07002f
 int id buttonNext 0x7f070022
 int id buttonSend 0x7f070024
@@ -139,7 +139,7 @@ int id buy_now 0x7f07000f
 int id buy_with_google 0x7f07000e
 int id checkBoxGejala 0x7f070028
 int id classic 0x7f070011
-int id drawer_layout 0x7f070033
+int id drawer_layout 0x7f070034
 int id editTextAlamat 0x7f07001e
 int id editTextKelompokTani 0x7f07001f
 int id editTextMessage 0x7f070025
@@ -147,7 +147,7 @@ int id editTextName 0x7f07001b
 int id editTextPassword 0x7f07001d
 int id editTextServerAddress 0x7f070017
 int id editTextUserName 0x7f07001c
-int id frame_container 0x7f070034
+int id frame_container 0x7f070035
 int id grayscale 0x7f070012
 int id holo_dark 0x7f070005
 int id holo_light 0x7f070006
@@ -158,9 +158,9 @@ int id listViewChatMessage 0x7f070026
 int id listViewGejala 0x7f070023
 int id listViewPengguna 0x7f070021
 int id listViewPenyakit 0x7f070030
-int id list_slidermenu 0x7f070035
+int id list_slidermenu 0x7f070036
 int id match_parent 0x7f07000c
-int id menu_setting_server 0x7f070037
+int id menu_setting_server 0x7f070038
 int id monochrome 0x7f070013
 int id none 0x7f070000
 int id normal 0x7f070001
@@ -175,6 +175,7 @@ int id textView1 0x7f070016
 int id textViewContactName 0x7f070029
 int id textViewGejala 0x7f070027
 int id textViewInfo 0x7f07001a
+int id textViewKesimpulanKata 0x7f070031
 int id textViewMessage 0x7f07002a
 int id textViewNamaPengguna 0x7f07002c
 int id textViewResultPenyakit 0x7f07002d
